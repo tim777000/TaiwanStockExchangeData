@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using TaiwanStockExchangeData.Data;
 
 namespace TaiwanStockExchangeData
 {
@@ -24,6 +26,9 @@ namespace TaiwanStockExchangeData
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<TaiwanStockExchangeDataContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("TaiwanStockExchangeDataContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

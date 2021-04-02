@@ -1,0 +1,78 @@
+@page
+@model TaiwanStockExchangeData.Pages.Securities.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].CodeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].DividendYield)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].DividendYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].PriceToEarningRatio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].PriceToBookRatio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].FinancialStatements)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Security[0].Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Security) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DividendYield)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DividendYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceToEarningRatio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceToBookRatio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinancialStatements)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+@page
+@model TaiwanStockExchangeData.Pages.Securities.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Security</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Security.CodeName" class="control-label"></label>
+                <input asp-for="Security.CodeName" class="form-control" />
+                <span asp-validation-for="Security.CodeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.Name" class="control-label"></label>
+                <input asp-for="Security.Name" class="form-control" />
+                <span asp-validation-for="Security.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.DividendYield" class="control-label"></label>
+                <input asp-for="Security.DividendYield" class="form-control" />
+                <span asp-validation-for="Security.DividendYield" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.DividendYear" class="control-label"></label>
+                <input asp-for="Security.DividendYear" class="form-control" />
+                <span asp-validation-for="Security.DividendYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.PriceToEarningRatio" class="control-label"></label>
+                <input asp-for="Security.PriceToEarningRatio" class="form-control" />
+                <span asp-validation-for="Security.PriceToEarningRatio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.PriceToBookRatio" class="control-label"></label>
+                <input asp-for="Security.PriceToBookRatio" class="form-control" />
+                <span asp-validation-for="Security.PriceToBookRatio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.FinancialStatements" class="control-label"></label>
+                <input asp-for="Security.FinancialStatements" class="form-control" />
+                <span asp-validation-for="Security.FinancialStatements" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Security.Date" class="control-label"></label>
+                <input asp-for="Security.Date" class="form-control" />
+                <span asp-validation-for="Security.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
