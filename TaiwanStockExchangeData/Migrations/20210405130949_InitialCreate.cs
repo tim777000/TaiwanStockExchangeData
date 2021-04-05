@@ -13,12 +13,12 @@ namespace TaiwanStockExchangeData.Migrations
                 {
                     ID = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CodeName = table.Column<long>(type: "INTEGER", nullable: false),
+                    CodeName = table.Column<string>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
-                    DividendYield = table.Column<double>(type: "REAL", nullable: false),
+                    DividendYield = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     DividendYear = table.Column<long>(type: "INTEGER", nullable: false),
-                    PriceToEarningRatio = table.Column<double>(type: "REAL", nullable: false),
-                    PriceToBookRatio = table.Column<double>(type: "REAL", nullable: false),
+                    PriceToEarningRatio = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    PriceToBookRatio = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     FinancialStatements = table.Column<string>(type: "TEXT", nullable: true),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },

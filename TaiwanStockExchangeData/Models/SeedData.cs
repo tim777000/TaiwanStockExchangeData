@@ -22,12 +22,32 @@ namespace TaiwanStockExchangeData.Models
                 context.Security.AddRange(
                     new Security
                     {
-                        CodeName = 0001,
+                        CodeName = "0001",
                         Name = "QwQ",
-                        DividendYield = 0.1,
+                        DividendYield = 0.19M,
                         DividendYear = 100,
-                        PriceToEarningRatio = 0.1,
-                        PriceToBookRatio = 0.1,
+                        PriceToEarningRatio = 0.19M,
+                        PriceToBookRatio = 0.19M,
+                        FinancialStatements = "100/25"
+                    },
+                    new Security
+                    {
+                        CodeName = "5501",
+                        Name = "QwQ",
+                        DividendYield = 0.19M,
+                        DividendYear = 100,
+                        PriceToEarningRatio = 0.19M,
+                        PriceToBookRatio = 0.19M,
+                        FinancialStatements = "100/25"
+                    },
+                    new Security
+                    {
+                        CodeName = "3301",
+                        Name = "QwQ",
+                        DividendYield = 0.19M,
+                        DividendYear = 100,
+                        PriceToEarningRatio = 0.19M,
+                        PriceToBookRatio = 0.19M,
                         FinancialStatements = "100/25"
                     }
                 );

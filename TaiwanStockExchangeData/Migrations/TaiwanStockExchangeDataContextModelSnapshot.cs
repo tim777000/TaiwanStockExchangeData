@@ -22,8 +22,8 @@ namespace TaiwanStockExchangeData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("CodeName")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("CodeName")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
@@ -31,8 +31,8 @@ namespace TaiwanStockExchangeData.Migrations
                     b.Property<long>("DividendYear")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("DividendYield")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("DividendYield")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("FinancialStatements")
                         .HasColumnType("TEXT");
@@ -40,11 +40,11 @@ namespace TaiwanStockExchangeData.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("PriceToBookRatio")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("PriceToBookRatio")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<double>("PriceToEarningRatio")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("PriceToEarningRatio")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("ID");
 
