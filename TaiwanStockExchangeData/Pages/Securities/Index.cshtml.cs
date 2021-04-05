@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaiwanStockExchangeData.Data;
 using TaiwanStockExchangeData.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaiwanStockExchangeData.Pages.Securities
 {
@@ -27,12 +28,27 @@ namespace TaiwanStockExchangeData.Pages.Securities
         [BindProperty(SupportsGet = true)]
         public string SecurityGenre { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        [DataType(DataType.Date)]
+        public DateTime? StartDate { get; set; }
+        [BindProperty(SupportsGet = true)]
+        [DataType(DataType.Date)]
+        public DateTime? EndDate { get; set; }
+
         public async Task OnGetAsync()
         {
             var securities = from s in _context.Security select s;
             if(!string.IsNullOrEmpty(SearchString))
             {
                 securities = securities.Where(s => s.CodeName.Contains(SearchString));
+            }
+            if(StartDate.HasValue && EndDate.HasValue)
+            {
+                securities = securities.Where(s => s.Date >= StartDate && s.Date <= EndDate);
+            }
+            if(StartDate.HasValue && !EndDate.HasValue)
+            {
+                securities = securities.Where(s => s.Date == StartDate);
             }
             Security = await securities.ToListAsync();
         }
