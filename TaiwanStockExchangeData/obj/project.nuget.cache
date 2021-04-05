@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NILuIawiqta6ohz4XQBFf1brJcwP0JxIPBFjgH8cmkqy5+ZAYvMi6U+52wKOpvXw2acmt5CfpVlLgsCQnMgKbQ==",
+  "dgSpecHash": "xlp+6GNDuBkfeNMI3pj4TFgSOY9eaaqVpWJVcxq06RTycDQrD/1UcSJEWQFOje+vYU/JgMuVM6ggGPDNsNUYYg==",
   "success": true,
   "projectFilePath": "/Users/yutingguang/Projects/TaiwanStockExchangeData/TaiwanStockExchangeData/TaiwanStockExchangeData.csproj",
   "expectedPackageFiles": [
@@ -46,7 +46,7 @@
     "/Users/yutingguang/.nuget/packages/microsoft.identitymodel.protocols/5.6.0/microsoft.identitymodel.protocols.5.6.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/5.6.0/microsoft.identitymodel.protocols.openidconnect.5.6.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/microsoft.identitymodel.tokens/5.6.0/microsoft.identitymodel.tokens.5.6.0.nupkg.sha512",
-    "/Users/yutingguang/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "/Users/yutingguang/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/microsoft.netcore.targets/1.1.3/microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/microsoft.visualstudio.web.codegeneration/5.0.2/microsoft.visualstudio.web.codegeneration.5.0.2.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/microsoft.visualstudio.web.codegeneration.contracts/5.0.2/microsoft.visualstudio.web.codegeneration.contracts.5.0.2.nupkg.sha512",
@@ -125,7 +125,7 @@
     "/Users/yutingguang/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/system.security.securestring/4.3.0/system.security.securestring.4.3.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
-    "/Users/yutingguang/.nuget/packages/system.text.encoding.codepages/4.7.0/system.text.encoding.codepages.4.7.0.nupkg.sha512",
+    "/Users/yutingguang/.nuget/packages/system.text.encoding.codepages/5.0.0/system.text.encoding.codepages.5.0.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/system.text.encoding.extensions/4.3.0/system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512",
     "/Users/yutingguang/.nuget/packages/system.text.regularexpressions/4.3.0/system.text.regularexpressions.4.3.0.nupkg.sha512",

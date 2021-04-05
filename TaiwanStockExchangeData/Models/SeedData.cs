@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using TaiwanStockExchangeData.Data;
 using System;
 using System.Linq;
+using System.IO;
+using System.Text;
 
 namespace TaiwanStockExchangeData.Models
 {
@@ -14,6 +16,13 @@ namespace TaiwanStockExchangeData.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<TaiwanStockExchangeDataContext>>()))
             {
+                string line;
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                StreamReader file = new StreamReader("BWIBBU_d_ALL_20210330.csv", Encoding.GetEncoding("Big5"), true);
+                while ((line = file.ReadLine()) != null)
+                {
+                    System.Console.WriteLine(line);
+                }
                 // Look for any securities.
                 if (context.Security.Any())
                 {
