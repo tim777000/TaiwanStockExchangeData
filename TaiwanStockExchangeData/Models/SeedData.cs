@@ -17,20 +17,24 @@ namespace TaiwanStockExchangeData.Models
                     DbContextOptions<TaiwanStockExchangeDataContext>>()))
             {
                 // Look for any securities.
-                if (context.Security.Any())
+                var securities = from s in context.Security select s;
+                securities = securities.Where(s => s.CodeName.Contains("Test"));
+                securities = securities.Where(s => s.Date == DateTime.ParseExact("20200101", "yyyyMMdd", null));
+                if (securities.Any())
                 {
-                    return; // DB has been seeded
+                    return; // Already In DB
                 }
                 context.Security.AddRange(
                     new Security
                     {
                         CodeName = "Test",
                         Name = "Test",
-                        DividendYield = 71.22M,
-                        DividendYear = 7122,
-                        PriceToEarningRatio =71.22M,
-                        PriceToBookRatio = 71.22M,
-                        FinancialStatements = "Test"
+                        DividendYield = Convert.ToDecimal("71.22"),
+                        DividendYear = Convert.ToUInt32("7122"),
+                        PriceToEarningRatio = Convert.ToDecimal("71.22"),
+                        PriceToBookRatio = Convert.ToDecimal("71.22"),
+                        FinancialStatements = "Test",
+                        Date = DateTime.ParseExact("20200101", "yyyyMMdd", null)
                     }
                 );
                 context.SaveChanges();

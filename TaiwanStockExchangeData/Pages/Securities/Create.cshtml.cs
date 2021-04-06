@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -45,12 +46,44 @@ namespace TaiwanStockExchangeData.Pages.Securities
                 if (file.Length > 0)
                 {
                     var path = $@"CSV/{file.FileName}";
+                    var fileName = file.FileName.Split('_');
+                    fileName = fileName[3].Split('.');
                     var result = string.Empty;
+                    int counter = 0;
                     using (var reader = new StreamReader(file.OpenReadStream(), Encoding.GetEncoding("Big5"), true))
                     {
                         while ((result = reader.ReadLine()) != null)
                         {
-                            System.Console.WriteLine(result);
+                            var targetData = result.Split(',');
+                            if (counter >= 2 && targetData.Length == 8)
+                            {
+                                //System.Console.WriteLine(Convert.ToDecimal(targetData[2].Replace("\"", ""), new CultureInfo("en-US")));
+                                var securities = from s in _context.Security select s;
+                                securities = securities.Where(s => s.CodeName.Contains(targetData[0].Replace("\"", "")));
+                                securities = securities.Where(s => s.Date == DateTime.ParseExact(fileName[0], "yyyyMMdd", null));
+                                if (!securities.Any())
+                                {
+                                    _context.Security.AddRange(
+                                        new Security
+                                        {
+                                            CodeName = targetData[0].Replace("\"", ""),
+                                            Name = targetData[1].Replace("\"", ""),
+                                            DividendYield = Convert.ToDecimal(targetData[2].Replace("\"", "")),
+                                            DividendYear = Convert.ToUInt32(targetData[3].Replace("\"", "")),
+                                            PriceToEarningRatio = Convert.ToDecimal(targetData[4].Replace("\"", "")),
+                                            PriceToBookRatio = Convert.ToDecimal(targetData[5].Replace("\"", "")),
+                                            FinancialStatements = targetData[6].Replace("\"", ""),
+                                            Date = DateTime.ParseExact(fileName[0], "yyyyMMdd", null)
+                                        }
+                                    );
+                                    _context.SaveChanges();
+                                }
+                            }
+                            counter++;
+                            /*if(counter == 5)
+                            {
+                                break;
+                            }*/
                         }
                     }
                     using (var stream = new FileStream(path, FileMode.Create))
