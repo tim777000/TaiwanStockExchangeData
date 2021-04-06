@@ -16,13 +16,6 @@ namespace TaiwanStockExchangeData.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<TaiwanStockExchangeDataContext>>()))
             {
-                string line;
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                StreamReader file = new StreamReader("BWIBBU_d_ALL_20210330.csv", Encoding.GetEncoding("Big5"), true);
-                while ((line = file.ReadLine()) != null)
-                {
-                    System.Console.WriteLine(line);
-                }
                 // Look for any securities.
                 if (context.Security.Any())
                 {
@@ -31,33 +24,13 @@ namespace TaiwanStockExchangeData.Models
                 context.Security.AddRange(
                     new Security
                     {
-                        CodeName = "0001",
-                        Name = "QwQ",
-                        DividendYield = 0.19M,
-                        DividendYear = 100,
-                        PriceToEarningRatio = 0.19M,
-                        PriceToBookRatio = 0.19M,
-                        FinancialStatements = "100/25"
-                    },
-                    new Security
-                    {
-                        CodeName = "5501",
-                        Name = "QwQ",
-                        DividendYield = 0.19M,
-                        DividendYear = 100,
-                        PriceToEarningRatio = 0.19M,
-                        PriceToBookRatio = 0.19M,
-                        FinancialStatements = "100/25"
-                    },
-                    new Security
-                    {
-                        CodeName = "3301",
-                        Name = "QwQ",
-                        DividendYield = 0.19M,
-                        DividendYear = 100,
-                        PriceToEarningRatio = 0.19M,
-                        PriceToBookRatio = 0.19M,
-                        FinancialStatements = "100/25"
+                        CodeName = "Test",
+                        Name = "Test",
+                        DividendYield = 71.22M,
+                        DividendYear = 7122,
+                        PriceToEarningRatio =71.22M,
+                        PriceToBookRatio = 71.22M,
+                        FinancialStatements = "Test"
                     }
                 );
                 context.SaveChanges();
