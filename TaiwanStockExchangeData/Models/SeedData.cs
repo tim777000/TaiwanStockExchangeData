@@ -29,10 +29,10 @@ namespace TaiwanStockExchangeData.Models
                     {
                         CodeName = "Test",
                         Name = "Test",
-                        DividendYield = Convert.ToDecimal("71.22"),
+                        DividendYield = Convert.ToDouble("71.22"),
                         DividendYear = Convert.ToUInt32("7122"),
-                        PriceToEarningRatio = Convert.ToDecimal("71.22"),
-                        PriceToBookRatio = Convert.ToDecimal("71.22"),
+                        PriceToEarningRatio = Convert.ToDouble("71.22"),
+                        PriceToBookRatio = Convert.ToDouble("71.22"),
                         FinancialStatements = "Test",
                         Date = DateTime.ParseExact("20200101", "yyyyMMdd", null)
                     }

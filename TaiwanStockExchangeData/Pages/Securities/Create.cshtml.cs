@@ -57,21 +57,36 @@ namespace TaiwanStockExchangeData.Pages.Securities
                             var targetData = result.Split(',');
                             if (counter >= 2 && targetData.Length == 8)
                             {
-                                //System.Console.WriteLine(Convert.ToDecimal(targetData[2].Replace("\"", ""), new CultureInfo("en-US")));
                                 var securities = from s in _context.Security select s;
                                 securities = securities.Where(s => s.CodeName.Contains(targetData[0].Replace("\"", "")));
                                 securities = securities.Where(s => s.Date == DateTime.ParseExact(fileName[0], "yyyyMMdd", null));
                                 if (!securities.Any())
                                 {
+                                    if(targetData[2].Replace("\"", "") == "-")
+                                    {
+                                        targetData[2] = "0";
+                                    }
+                                    if (targetData[3].Replace("\"", "") == "-")
+                                    {
+                                        targetData[3] = "0";
+                                    }
+                                    if (targetData[4].Replace("\"", "") == "-")
+                                    {
+                                        targetData[4] = "0";
+                                    }
+                                    if (targetData[5].Replace("\"", "") == "-")
+                                    {
+                                        targetData[5] = "0";
+                                    }
                                     _context.Security.AddRange(
                                         new Security
                                         {
                                             CodeName = targetData[0].Replace("\"", ""),
                                             Name = targetData[1].Replace("\"", ""),
-                                            DividendYield = Convert.ToDecimal(targetData[2].Replace("\"", "")),
+                                            DividendYield = Convert.ToDouble(targetData[2].Replace("\"", "")),
                                             DividendYear = Convert.ToUInt32(targetData[3].Replace("\"", "")),
-                                            PriceToEarningRatio = Convert.ToDecimal(targetData[4].Replace("\"", "")),
-                                            PriceToBookRatio = Convert.ToDecimal(targetData[5].Replace("\"", "")),
+                                            PriceToEarningRatio = Convert.ToDouble(targetData[4].Replace("\"", "")),
+                                            PriceToBookRatio = Convert.ToDouble(targetData[5].Replace("\"", "")),
                                             FinancialStatements = targetData[6].Replace("\"", ""),
                                             Date = DateTime.ParseExact(fileName[0], "yyyyMMdd", null)
                                         }
@@ -80,10 +95,10 @@ namespace TaiwanStockExchangeData.Pages.Securities
                                 }
                             }
                             counter++;
-                            /*if(counter == 5)
+                            if(counter == 15)
                             {
                                 break;
-                            }*/
+                            }
                         }
                     }
                     using (var stream = new FileStream(path, FileMode.Create))

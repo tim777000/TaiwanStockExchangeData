@@ -38,18 +38,65 @@ namespace TaiwanStockExchangeData.Pages.Securities
         public async Task OnGetAsync()
         {
             var securities = from s in _context.Security select s;
-            if(!string.IsNullOrEmpty(SearchString))
+
+            if(!string.IsNullOrEmpty(SearchString) && !StartDate.HasValue && !EndDate.HasValue)
             {
                 securities = securities.Where(s => s.CodeName.Contains(SearchString));
+                securities = securities.OrderByDescending(s => s.Date);
             }
-            if(StartDate.HasValue && EndDate.HasValue)
-            {
-                securities = securities.Where(s => s.Date >= StartDate && s.Date <= EndDate);
-            }
-            if(StartDate.HasValue && !EndDate.HasValue)
+
+            if(string.IsNullOrEmpty(SearchString) && StartDate.HasValue && !EndDate.HasValue)
             {
                 securities = securities.Where(s => s.Date == StartDate);
+                securities = securities.OrderByDescending(s => s.PriceToEarningRatio);
             }
+
+            if(!string.IsNullOrEmpty(SearchString) && StartDate.HasValue && EndDate.HasValue)
+            {
+                securities = securities.Where(s => s.CodeName.Contains(SearchString));
+                securities = securities.Where(s => s.Date >= StartDate && s.Date <= EndDate);
+                securities = securities.OrderBy(s => s.Date);
+                var sda = StartDate;
+                var sd = StartDate;
+                var ed = EndDate;
+                double dy = -1.0;
+                int counter = 0;
+                int max = 0;
+                Security pre = null;
+                foreach (Security s in securities)
+                {
+                    if(counter == 0)
+                    {
+                        pre = s;
+                    }
+                    if (s.DividendYield > dy)
+                    {
+                        dy = s.DividendYield;
+                        counter++;
+                    }
+                    else
+                    {
+                        dy = s.DividendYield;
+                        if(counter >= max)
+                        {
+                            max = counter;
+                            sda = sd;
+                            ed = pre.Date;
+                            sd = s.Date;
+                            counter = 1;
+                        }
+                    }
+                    pre = s;
+                }
+                if (counter >= max)
+                {
+                    sda = sd;
+                    ed = pre.Date;
+                }
+                securities = securities.Where(s => s.Date >= sda && s.Date <= ed);
+                securities = securities.OrderBy(s => s.Date);
+            }
+            
             Security = await securities.ToListAsync();
         }
     }

@@ -14,7 +14,7 @@
         "outputPath": "/Users/yutingguang/Projects/TaiwanStockExchangeData/TaiwanStockExchangeData/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yutingguang/.nuget/NuGet/NuGet.Config"
+          "/Users/yutingguang/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
