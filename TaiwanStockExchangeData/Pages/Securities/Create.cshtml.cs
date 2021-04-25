@@ -95,10 +95,6 @@ namespace TaiwanStockExchangeData.Pages.Securities
                                 }
                             }
                             counter++;
-                            /*if(counter == 15)
-                            {
-                                break;
-                            }*/
                         }
                     }
                     using (var stream = new FileStream(path, FileMode.Create))
